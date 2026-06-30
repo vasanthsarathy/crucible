@@ -7,11 +7,11 @@
 <p><em>Review-Driven Development (RDD) for AI/ML research papers.</em></p>
 
 <p>
-  <a href="../../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-22c55e"></a>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-3b82f6">
-  <img alt="Claude Code plugin" src="https://img.shields.io/badge/Claude%20Code-plugin-8b5cf6?logo=anthropic&logoColor=white">
-  <img alt="Skills" src="https://img.shields.io/badge/skills-5-f59e0b">
-  <img alt="Reviewers" src="https://img.shields.io/badge/reviewers-7-ef4444">
+  <a href="../../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-27272a?style=flat-square&labelColor=18181b"></a>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-ea580c?style=flat-square&labelColor=18181b">
+  <img alt="Claude Code plugin" src="https://img.shields.io/badge/claude_code-plugin-27272a?style=flat-square&labelColor=18181b&logo=anthropic&logoColor=ea580c">
+  <img alt="Skills" src="https://img.shields.io/badge/skills-5-27272a?style=flat-square&labelColor=18181b">
+  <img alt="Reviewers" src="https://img.shields.io/badge/reviewers-7-ea580c?style=flat-square&labelColor=18181b">
 </p>
 
 <sub><a href="../../README.md">↑ part of the <b>crucible</b> marketplace</a></sub>

@@ -1,71 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="240" viewBox="0 0 860 240" role="img" aria-label="Crucible — Review-Driven Development for AI/ML research">
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="240" viewBox="0 0 860 240" role="img" aria-label="Crucible — review-driven development for AI/ML research">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0b1020"/>
-      <stop offset="1" stop-color="#231742"/>
+      <stop offset="0" stop-color="#0a0a0b"/>
+      <stop offset="1" stop-color="#161618"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#fb923c" stop-opacity="0.75"/>
-      <stop offset="0.6" stop-color="#f97316" stop-opacity="0.25"/>
-      <stop offset="1" stop-color="#f97316" stop-opacity="0"/>
+    <radialGradient id="ember" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#f59e0b" stop-opacity="0.6"/>
+      <stop offset="0.55" stop-color="#c2410c" stop-opacity="0.22"/>
+      <stop offset="1"   stop-color="#c2410c" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="molten" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fde047"/>
-      <stop offset="0.5" stop-color="#fb923c"/>
-      <stop offset="1" stop-color="#ef4444"/>
+      <stop offset="0"   stop-color="#fbbf24"/>
+      <stop offset="0.5" stop-color="#ea580c"/>
+      <stop offset="1"   stop-color="#7c2d12"/>
     </linearGradient>
     <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#64748b"/>
-      <stop offset="0.55" stop-color="#334155"/>
-      <stop offset="1" stop-color="#1e293b"/>
-    </linearGradient>
-    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#f8fafc"/>
-      <stop offset="1" stop-color="#e2e8f0"/>
+      <stop offset="0"    stop-color="#e4e4e7"/>
+      <stop offset="0.55" stop-color="#71717a"/>
+      <stop offset="1"    stop-color="#27272a"/>
     </linearGradient>
     <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
       <feGaussianBlur stdDeviation="6"/>
     </filter>
   </defs>
 
-  <rect x="0" y="0" width="860" height="240" rx="26" fill="url(#bg)"/>
-  <rect x="1.5" y="1.5" width="857" height="237" rx="24.5" fill="none" stroke="#3b2f63" stroke-width="1.5"/>
+  <rect x="0" y="0" width="860" height="240" rx="20" fill="url(#bg)"/>
+  <rect x="1" y="1" width="858" height="238" rx="19" fill="none" stroke="#27272a" stroke-width="1"/>
 
-  <!-- crucible mark -->
-  <g transform="translate(60,18)">
-    <ellipse cx="100" cy="118" rx="92" ry="86" fill="url(#glow)" filter="url(#soft)"/>
-
-    <!-- rising sparks -->
-    <circle cx="100" cy="30" r="3.2" fill="#fde047" filter="url(#soft)"/>
-    <circle cx="124" cy="46" r="2.4" fill="#fb923c" filter="url(#soft)"/>
-    <circle cx="78"  cy="50" r="2.2" fill="#fca5a5" filter="url(#soft)"/>
-    <circle cx="112" cy="60" r="1.8" fill="#fde047"/>
-    <circle cx="86"  cy="34" r="1.6" fill="#fdba74"/>
-
-    <!-- flames -->
-    <g filter="url(#soft)" opacity="0.95">
-      <path d="M100,118 C84,104 88,80 100,62 C112,80 116,104 100,118 Z" fill="url(#molten)"/>
-      <path d="M74,120 C66,110 68,94 78,82 C86,96 84,112 74,120 Z" fill="url(#molten)" opacity="0.85"/>
-      <path d="M126,120 C134,110 132,94 122,82 C114,96 116,112 126,120 Z" fill="url(#molten)" opacity="0.85"/>
-    </g>
-
-    <!-- vessel -->
-    <path d="M48,120 C48,162 70,196 100,196 C130,196 152,162 152,120 Z" fill="url(#metal)"/>
-    <path d="M48,120 C48,162 70,196 100,196 C130,196 152,162 152,120" fill="none" stroke="#0f172a" stroke-width="2"/>
-    <rect x="80" y="194" width="40" height="12" rx="3" fill="#1e293b"/>
-    <ellipse cx="100" cy="210" rx="44" ry="9" fill="#334155"/>
-    <ellipse cx="100" cy="210" rx="44" ry="9" fill="none" stroke="#0f172a" stroke-width="1.5"/>
-
-    <!-- molten surface -->
-    <ellipse cx="100" cy="120" rx="54" ry="14" fill="url(#molten)" filter="url(#soft)" opacity="0.9"/>
-    <ellipse cx="100" cy="120" rx="52" ry="13" fill="url(#molten)"/>
-    <ellipse cx="100" cy="120" rx="52" ry="13" fill="none" stroke="#fcd34d" stroke-width="2"/>
+  <!-- terminal corner ticks -->
+  <g stroke="#3f3f46" stroke-width="1.6" fill="none">
+    <path d="M16,30 L16,16 L30,16"/>
+    <path d="M844,30 L844,16 L830,16"/>
+    <path d="M16,210 L16,224 L30,224"/>
+    <path d="M844,210 L844,224 L830,224"/>
   </g>
 
-  <!-- wordmark -->
-  <g transform="translate(296,0)" font-family="'Segoe UI', Helvetica, Arial, system-ui, sans-serif">
-    <text x="0" y="118" font-size="68" font-weight="800" letter-spacing="7" fill="url(#ink)">CRUCIBLE</text>
-    <text x="3" y="152" font-size="17.5" font-weight="700" letter-spacing="3.5" fill="#fbbf24">REVIEW-DRIVEN DEVELOPMENT</text>
-    <text x="3" y="178" font-size="16" font-weight="500" letter-spacing="1.5" fill="#94a3b8">an adversarial reviewer panel for AI / ML research</text>
+  <!-- crucible mark (grayscale body, ember core) -->
+  <g transform="translate(58,18)">
+    <ellipse cx="100" cy="120" rx="94" ry="84" fill="url(#ember)" filter="url(#soft)"/>
+
+    <!-- embers rising -->
+    <circle cx="100" cy="30" r="3"   fill="#fbbf24" filter="url(#soft)"/>
+    <circle cx="124" cy="46" r="2.2" fill="#ea580c" filter="url(#soft)"/>
+    <circle cx="78"  cy="50" r="2"   fill="#f59e0b" filter="url(#soft)"/>
+    <circle cx="112" cy="60" r="1.6" fill="#fbbf24"/>
+    <circle cx="86"  cy="34" r="1.5" fill="#ea580c"/>
+
+    <!-- flames -->
+    <g filter="url(#soft)">
+      <path d="M100,118 C84,104 88,80 100,62 C112,80 116,104 100,118 Z" fill="url(#molten)"/>
+      <path d="M74,120 C66,110 68,94 78,82 C86,96 84,112 74,120 Z" fill="url(#molten)" opacity="0.8"/>
+      <path d="M126,120 C134,110 132,94 122,82 C114,96 116,112 126,120 Z" fill="url(#molten)" opacity="0.8"/>
+    </g>
+
+    <!-- vessel: monochrome metal -->
+    <path d="M48,120 C48,162 70,196 100,196 C130,196 152,162 152,120 Z" fill="url(#metal)"/>
+    <path d="M48,120 C48,162 70,196 100,196 C130,196 152,162 152,120" fill="none" stroke="#09090b" stroke-width="2"/>
+    <rect x="80" y="194" width="40" height="12" rx="3" fill="#27272a"/>
+    <ellipse cx="100" cy="210" rx="44" ry="9" fill="#3f3f46"/>
+    <ellipse cx="100" cy="210" rx="44" ry="9" fill="none" stroke="#09090b" stroke-width="1.5"/>
+
+    <!-- molten surface: the single hit of color -->
+    <ellipse cx="100" cy="120" rx="54" ry="14" fill="url(#molten)" filter="url(#soft)" opacity="0.85"/>
+    <ellipse cx="100" cy="120" rx="52" ry="13" fill="url(#molten)"/>
+    <ellipse cx="100" cy="120" rx="52" ry="13" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+  </g>
+
+  <!-- wordmark: monospace -->
+  <g transform="translate(298,0)" font-family="'IBM Plex Mono','Courier New',ui-monospace,SFMono-Regular,monospace">
+    <text x="0" y="112" font-size="56" font-weight="700" letter-spacing="6" fill="#f4f4f5">CRUCIBLE</text>
+    <rect x="326" y="76" width="17" height="37" fill="#ea580c"/>
+    <text x="2" y="150" font-size="16" font-weight="500" letter-spacing="1" fill="#71717a"><tspan fill="#ea580c">&gt; </tspan>review-driven development</text>
+    <text x="2" y="176" font-size="16" font-weight="500" letter-spacing="1" fill="#52525b">for ai · ml research papers<tspan fill="#ea580c">_</tspan></text>
   </g>
 </svg>
