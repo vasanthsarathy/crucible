@@ -1,0 +1,12 @@
+{
+  "name": "crucible",
+  "owner": { "name": "vasanthsarathy", "email": "vsarathy@gmail.com" },
+  "description": "Crucible — a marketplace of plugins for Review-driven Development of AI/ML research.",
+  "plugins": [
+    {
+      "name": "crucible-rdd",
+      "source": "./plugins/crucible-rdd",
+      "description": "Review-driven Development for AI/ML research papers. Run your work through an adversarial reviewer panel at every stage. Skills-primary: works standalone, enriched by an optional MCP server."
+    }
+  ]
+}
