@@ -1,0 +1,128 @@
+from __future__ import annotations
+from datetime import datetime
+from enum import Enum
+from typing import Literal, Optional
+from pydantic import BaseModel
+
+
+class ReviewVerdict(str, Enum):
+    ACCEPT = "accept"
+    REVISE = "revise"
+    REJECT = "reject"
+    FINDINGS = "findings"  # for Linnaeus and Socrates
+
+
+class ConceptStatus(str, Enum):
+    ENCOUNTERED = "encountered"
+    EXPLAINED = "explained"
+    APPLIED = "applied"
+
+
+Stage = Literal["SEED", "PROBLEM", "SURVEY", "SOLUTION", "DEVELOP", "PAPER"]
+GateResult = Literal["pass", "fail"]
+
+
+class ProjectState(BaseModel):
+    project_id: str
+    name: str
+    seed_idea: str
+    target_venue: Optional[str] = None
+    current_stage: Stage = "SEED"
+    created_at: datetime
+    updated_at: datetime
+
+
+class ProjectSummary(BaseModel):
+    project_id: str
+    name: str
+    current_stage: Stage
+    target_venue: Optional[str] = None
+    created_at: datetime
+
+
+class ReviewerFeedback(BaseModel):
+    reviewer_id: str
+    verdict: ReviewVerdict
+    concerns: list[str] = []
+    suggestions: list[str] = []
+    feedback_text: str
+
+
+class ReviewRound(BaseModel):
+    round_id: str
+    stage: Stage
+    sections_reviewed: list[str] = []
+    devil_advocate_text: str = ""
+    reviews: list[ReviewerFeedback] = []
+    gate_result: Optional[GateResult] = None
+    timestamp: datetime
+
+
+class UnderstandingCheck(BaseModel):
+    check_id: str
+    stage: Stage
+    concept: Optional[str] = None
+    question: str
+    answer: str
+    assessment: Literal["clear", "partial", "gap"]
+    gaps: list[str] = []
+    timestamp: datetime
+
+
+class Assumption(BaseModel):
+    assumption_id: str
+    stage: Stage
+    assumption: str
+    source: str  # reviewer_id or "Socrates"
+    is_explicit: bool = False
+    is_justified: bool = False
+    timestamp: datetime
+
+
+class Idea(BaseModel):
+    idea_id: str
+    text: str
+    source_stage: Stage
+    timestamp: datetime
+
+
+class Concept(BaseModel):
+    name: str
+    status: ConceptStatus = ConceptStatus.ENCOUNTERED
+    stage_introduced: Stage
+    timestamp: datetime
+
+
+class ReviewerPersona(BaseModel):
+    reviewer_id: str
+    name: str
+    lens: str
+    evaluation_focus: str
+    default_stance: str
+    is_voting: bool = True  # False for Linnaeus and Socrates
+    is_custom: bool = False  # True if added per-project
+
+
+class VenueProfile(BaseModel):
+    venue: str
+    reviewer_weights: dict[str, float]  # reviewer_id → weight multiplier
+    notes: str = ""
+
+
+class Paper(BaseModel):
+    title: str
+    authors: list[str] = []
+    abstract: str = ""
+    url: str
+    arxiv_id: Optional[str] = None
+    year: Optional[int] = None
+    venue: Optional[str] = None
+
+
+class PivotEvaluation(BaseModel):
+    eval_id: str
+    stage: Stage
+    new_direction: str
+    outcome: Literal["pivot", "capture_and_continue"]
+    rationale: str
+    timestamp: datetime

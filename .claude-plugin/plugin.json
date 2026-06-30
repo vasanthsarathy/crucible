@@ -1,0 +1,27 @@
+{
+  "name": "crucible",
+  "version": "0.1.0",
+  "description": "Crucible — Review-driven Development for AI/ML research papers. Run your work through an adversarial reviewer panel at every stage. Skills-primary: works standalone, enriched by optional MCP server.",
+  "author": {"name": "vasanthsarathy", "email": "vsarathy@gmail.com"},
+  "license": "MIT",
+  "keywords": ["research", "papers", "review", "rdd", "neurips", "iclr", "ml", "crucible"],
+  "skills": {
+    "install_path": "skills/",
+    "files": [
+      "crucible-start.md",
+      "crucible-reviewer-round.md",
+      "crucible-advance.md",
+      "crucible-understand.md",
+      "crucible-status.md"
+    ]
+  },
+  "mcpServers": {
+    "crucible": {
+      "command": "uv",
+      "args": ["run", "--project", "${CLAUDE_PLUGIN_ROOT}/mcp-server", "crucible"],
+      "env": {
+        "CRUCIBLE_DIR": "${CRUCIBLE_DIR:-.crucible}"
+      }
+    }
+  }
+}

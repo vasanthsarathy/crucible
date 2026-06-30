@@ -1,0 +1,29 @@
+[project]
+name = "crucible"
+version = "0.1.0"
+description = "Optional MCP server for crucible RDD plugin — structured persistence and literature search"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.26.0,<2.0.0",
+    "httpx>=0.25.0",
+    "pydantic>=2.5.0",
+]
+
+[project.scripts]
+crucible = "crucible.server:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=5.0.0",
+    "respx>=0.21.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
