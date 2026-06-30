@@ -111,17 +111,17 @@ All state lives in `.crucible/<project-id>/` in your working directory as plain 
 
 ### Skills only (no server needed)
 
-Install once, available in all projects:
+Add the Crucible marketplace, then install the plugin — available in all projects:
 
 ```
-/plugin install /path/to/crucible
+/plugin marketplace add vasanthsarathy/crucible
+/plugin install crucible-rdd@crucible
 ```
 
-Or if published to the plugin registry:
+Then `/reload-plugins` (or restart Claude Code). For local development you can
+point the marketplace at a clone instead: `/plugin marketplace add /path/to/crucible`.
 
-```
-/plugin install crucible
-```
+To pull later updates: `/plugin marketplace update crucible`.
 
 ### With the optional MCP server
 
