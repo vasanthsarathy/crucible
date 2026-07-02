@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  manifests:
+    name: Validate plugin manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate marketplace.json and plugin.json are well-formed
+        run: |
+          jq empty .claude-plugin/marketplace.json
+          jq empty plugins/crucible-rdd/.claude-plugin/plugin.json
+          echo "manifests OK"
+
+  test:
+    name: MCP server tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Run pytest
+        working-directory: plugins/crucible-rdd/mcp-server
+        run: uv run python -m pytest -q

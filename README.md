@@ -8,6 +8,7 @@
 </p>
 
 <p>
+  <a href="https://github.com/vasanthsarathy/crucible/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/vasanthsarathy/crucible/ci.yml?style=flat-square&labelColor=18181b&label=ci"></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-27272a?style=flat-square&labelColor=18181b"></a>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-ea580c?style=flat-square&labelColor=18181b">
   <img alt="Claude Code plugin" src="https://img.shields.io/badge/claude_code-plugin-27272a?style=flat-square&labelColor=18181b&logo=anthropic&logoColor=ea580c">
