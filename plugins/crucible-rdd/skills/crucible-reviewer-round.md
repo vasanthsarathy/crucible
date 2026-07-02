@@ -1,6 +1,6 @@
 ---
 name: crucible:reviewer-round
-description: Run a full RDD reviewer panel on current paper sections. Embodies all seven adversarial reviewer personas sequentially. Can be called any time, not just at stage gates.
+description: Run an adversarial reviewer panel (seven personas) on the current research-paper sections. Use when the user — working on a paper in a crucible RDD project — asks for feedback, a critique, a review, or wants to know how reviewers would react to their draft. Can run any time, not only at stage gates.
 ---
 
 # Reviewer Round

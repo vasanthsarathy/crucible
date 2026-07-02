@@ -1,6 +1,7 @@
 ---
 name: crucible:start
 description: Start a new Review-driven Development research project from a seed idea. Creates project state, runs a quick worthiness check, and orients you to the PROBLEM stage.
+disable-model-invocation: true
 ---
 
 # Starting a Research Project

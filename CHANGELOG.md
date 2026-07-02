@@ -17,6 +17,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - README demo placeholder (`assets/demo-placeholder.svg`) + `docs/recording-a-demo.md`.
 
 ### Changed
+- Skill activation tuned so Claude auto-invokes the safe skills and leaves the
+  stateful ones deliberate: `reviewer-round`, `understand`, and `status` now
+  auto-invoke via scoped "use when…" descriptions; `start` and `advance` are
+  explicit-only (`disable-model-invocation: true`) because they create project
+  state / cross a stage gate.
 - The `crucible_update_concept_status` MCP tool now validates the `stage` argument
   against the allowed stages (typed `Stage`) instead of accepting any string.
 - Modernized reviewer/venue enums to `enum.StrEnum`.

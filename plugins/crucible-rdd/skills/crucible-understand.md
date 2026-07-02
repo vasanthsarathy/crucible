@@ -1,6 +1,6 @@
 ---
 name: crucible:understand
-description: Ad-hoc Socratic understanding check on any concept from your current research project. Use when you realize mid-session that you're not sure about something. Logs gaps and clarifications.
+description: Socratic understanding check on a concept in the user's crucible research project. Use when the user — in a crucible RDD project — says they're unsure, confused, or wants to test whether they truly understand a method, definition, or claim they're relying on. Logs gaps and clarifications.
 ---
 
 # Understanding Check
