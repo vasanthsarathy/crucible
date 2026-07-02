@@ -1,9 +1,9 @@
-import pytest
 import json
-from pathlib import Path
+
+import pytest
 from mcp.server.fastmcp import FastMCP
+
 from crucible.server import create_server
-from crucible.store import ProjectStore
 
 
 # Helper: FastMCP.call_tool returns (content_list, raw_dict).
@@ -30,11 +30,15 @@ def server(base_dir):
 
 @pytest.mark.asyncio
 async def test_create_and_get_project(server):
-    result = await ToolResult.call(server, "crucible_create_project", {
-        "name": "Test Paper",
-        "seed_idea": "What if we challenged IID?",
-        "target_venue": "NeurIPS",
-    })
+    result = await ToolResult.call(
+        server,
+        "crucible_create_project",
+        {
+            "name": "Test Paper",
+            "seed_idea": "What if we challenged IID?",
+            "target_venue": "NeurIPS",
+        },
+    )
     project_id = result.content[0].text
     assert project_id is not None
 
@@ -46,24 +50,26 @@ async def test_create_and_get_project(server):
 
 @pytest.mark.asyncio
 async def test_update_and_get_section(server):
-    result = await ToolResult.call(server, "crucible_create_project", {
-        "name": "Test", "seed_idea": "seed"
-    })
+    result = await ToolResult.call(
+        server, "crucible_create_project", {"name": "Test", "seed_idea": "seed"}
+    )
     pid = result.content[0].text
-    await ToolResult.call(server, "crucible_update_section", {
-        "project_id": pid, "section": "problem", "content": "## Problem\n\nLet $X$ be a set."
-    })
-    result2 = await ToolResult.call(server, "crucible_get_section", {
-        "project_id": pid, "section": "problem"
-    })
+    await ToolResult.call(
+        server,
+        "crucible_update_section",
+        {"project_id": pid, "section": "problem", "content": "## Problem\n\nLet $X$ be a set."},
+    )
+    result2 = await ToolResult.call(
+        server, "crucible_get_section", {"project_id": pid, "section": "problem"}
+    )
     assert "Let $X$" in result2.content[0].text
 
 
 @pytest.mark.asyncio
 async def test_advance_stage(server):
-    result = await ToolResult.call(server, "crucible_create_project", {
-        "name": "Test", "seed_idea": "seed"
-    })
+    result = await ToolResult.call(
+        server, "crucible_create_project", {"name": "Test", "seed_idea": "seed"}
+    )
     pid = result.content[0].text
     result2 = await ToolResult.call(server, "crucible_advance_stage", {"project_id": pid})
     assert "PROBLEM" in result2.content[0].text
@@ -80,9 +86,9 @@ async def test_list_projects(server):
 
 @pytest.mark.asyncio
 async def test_get_reviewer_personas(server):
-    result = await ToolResult.call(server, "crucible_create_project", {
-        "name": "Test", "seed_idea": "seed"
-    })
+    result = await ToolResult.call(
+        server, "crucible_create_project", {"name": "Test", "seed_idea": "seed"}
+    )
     pid = result.content[0].text
     result2 = await ToolResult.call(server, "crucible_get_reviewer_personas", {"project_id": pid})
     personas = json.loads(result2.content[0].text)

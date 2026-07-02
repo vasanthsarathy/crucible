@@ -6,6 +6,7 @@
     {
       "name": "crucible-rdd",
       "source": "./plugins/crucible-rdd",
+      "version": "0.1.0",
       "description": "Review-driven Development for AI/ML research papers. Run your work through an adversarial reviewer panel at every stage. Skills-primary: works standalone, enriched by an optional MCP server."
     }
   ]

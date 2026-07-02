@@ -1,18 +1,20 @@
 from __future__ import annotations
+
 from datetime import datetime
-from enum import Enum
-from typing import Literal, Optional
+from enum import StrEnum
+from typing import Literal
+
 from pydantic import BaseModel
 
 
-class ReviewVerdict(str, Enum):
+class ReviewVerdict(StrEnum):
     ACCEPT = "accept"
     REVISE = "revise"
     REJECT = "reject"
     FINDINGS = "findings"  # for Linnaeus and Socrates
 
 
-class ConceptStatus(str, Enum):
+class ConceptStatus(StrEnum):
     ENCOUNTERED = "encountered"
     EXPLAINED = "explained"
     APPLIED = "applied"
@@ -26,7 +28,7 @@ class ProjectState(BaseModel):
     project_id: str
     name: str
     seed_idea: str
-    target_venue: Optional[str] = None
+    target_venue: str | None = None
     current_stage: Stage = "SEED"
     created_at: datetime
     updated_at: datetime
@@ -36,7 +38,7 @@ class ProjectSummary(BaseModel):
     project_id: str
     name: str
     current_stage: Stage
-    target_venue: Optional[str] = None
+    target_venue: str | None = None
     created_at: datetime
 
 
@@ -54,14 +56,14 @@ class ReviewRound(BaseModel):
     sections_reviewed: list[str] = []
     devil_advocate_text: str = ""
     reviews: list[ReviewerFeedback] = []
-    gate_result: Optional[GateResult] = None
+    gate_result: GateResult | None = None
     timestamp: datetime
 
 
 class UnderstandingCheck(BaseModel):
     check_id: str
     stage: Stage
-    concept: Optional[str] = None
+    concept: str | None = None
     question: str
     answer: str
     assessment: Literal["clear", "partial", "gap"]
@@ -114,9 +116,9 @@ class Paper(BaseModel):
     authors: list[str] = []
     abstract: str = ""
     url: str
-    arxiv_id: Optional[str] = None
-    year: Optional[int] = None
-    venue: Optional[str] = None
+    arxiv_id: str | None = None
+    year: int | None = None
+    venue: str | None = None
 
 
 class PivotEvaluation(BaseModel):

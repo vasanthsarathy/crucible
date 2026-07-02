@@ -1,10 +1,10 @@
 from __future__ import annotations
+
+import httpx
 import pytest
 import respx
-import httpx
-import json
-from crucible.landscape import search_arxiv, search_semantic_scholar, search_literature
 
+from crucible.landscape import search_arxiv, search_literature, search_semantic_scholar
 
 ARXIV_RESPONSE = """<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">

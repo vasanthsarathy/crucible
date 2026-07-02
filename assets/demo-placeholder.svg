@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="308" viewBox="0 0 720 308" role="img" aria-label="Crucible demo — recording coming soon">
+  <defs>
+    <linearGradient id="term" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#111113"/>
+      <stop offset="1" stop-color="#0a0a0b"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="308" rx="12" fill="url(#term)"/>
+  <rect x="0.5" y="0.5" width="719" height="307" rx="11.5" fill="none" stroke="#27272a"/>
+
+  <!-- title bar -->
+  <rect x="0" y="0" width="720" height="36" rx="12" fill="#18181b"/>
+  <rect x="0" y="24" width="720" height="12" fill="#18181b"/>
+  <circle cx="22" cy="18" r="5" fill="#3f3f46"/>
+  <circle cx="40" cy="18" r="5" fill="#3f3f46"/>
+  <circle cx="58" cy="18" r="5" fill="#52525b"/>
+  <text x="360" y="22" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" font-size="12" fill="#71717a">crucible-rdd</text>
+  <text x="702" y="22" text-anchor="end" font-family="'IBM Plex Mono','Courier New',monospace" font-size="11.5" fill="#ea580c">● demo coming soon</text>
+
+  <!-- terminal body -->
+  <g font-family="'IBM Plex Mono','Courier New',monospace" font-size="13.5">
+    <text x="24" y="72"  fill="#52525b">$ claude</text>
+    <text x="24" y="98"  fill="#e4e4e7"><tspan fill="#ea580c">&gt; </tspan>/crucible:start</text>
+    <text x="24" y="122" fill="#71717a">  seed: "prune attention heads via causal tracing?"</text>
+    <text x="24" y="146" fill="#71717a">  worthiness → Flash: <tspan fill="#ea580c">INTRIGUED</tspan>   Copernicus: proceed</text>
+    <text x="24" y="176" fill="#e4e4e7"><tspan fill="#ea580c">&gt; </tspan>/crucible:reviewer-round</text>
+    <text x="24" y="200" fill="#71717a">  Archimedes: define "causal".   Edison: where are the ablations?</text>
+    <text x="24" y="230" fill="#e4e4e7"><tspan fill="#ea580c">&gt; </tspan>/crucible:advance</text>
+    <text x="24" y="254" fill="#71717a">  gate <tspan fill="#ea580c">3/5 PASS</tspan>   socratic probe → 1 gap logged</text>
+    <text x="24" y="288" fill="#52525b"><tspan fill="#ea580c">▶</tspan> real recording coming soon — see docs/recording-a-demo.md<tspan fill="#ea580c">_</tspan></text>
+  </g>
+</svg>

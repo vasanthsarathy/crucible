@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question / discussion
+    url: https://github.com/vasanthsarathy/crucible/discussions
+    about: Ask a question or discuss an idea before filing an issue.
+  - name: Security report
+    url: https://github.com/vasanthsarathy/crucible/security/advisories/new
+    about: Report a vulnerability privately (do not open a public issue).

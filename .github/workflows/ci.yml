@@ -17,6 +17,23 @@ jobs:
           jq empty plugins/crucible-rdd/.claude-plugin/plugin.json
           echo "manifests OK"
 
+  lint:
+    name: Lint & type-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Ruff lint
+        working-directory: plugins/crucible-rdd/mcp-server
+        run: uv run --extra dev ruff check
+      - name: Ruff format check
+        working-directory: plugins/crucible-rdd/mcp-server
+        run: uv run --extra dev ruff format --check
+      - name: Mypy type-check
+        working-directory: plugins/crucible-rdd/mcp-server
+        run: uv run --extra dev mypy src
+
   test:
     name: MCP server tests
     runs-on: ubuntu-latest

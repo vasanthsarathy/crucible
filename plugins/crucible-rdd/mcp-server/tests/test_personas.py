@@ -1,6 +1,6 @@
 from crucible.reviewer_personas import BUILTIN_PERSONAS, get_active_personas
-from crucible.venue_profiles import VENUE_PROFILES, get_venue_weights
 from crucible.store import ProjectStore
+from crucible.venue_profiles import VENUE_PROFILES, get_venue_weights
 
 
 def test_seven_builtin_personas():

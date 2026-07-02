@@ -1,24 +1,30 @@
 from __future__ import annotations
+
 import json
 import os
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Optional
 
 from mcp.server.fastmcp import FastMCP
 
 from .landscape import search_literature
 from .models import (
-    Assumption, Concept, ConceptStatus, Idea, PivotEvaluation,
-    ReviewRound, ReviewerFeedback, ReviewerPersona, UnderstandingCheck,
+    Assumption,
+    ConceptStatus,
+    Idea,
+    PivotEvaluation,
+    ReviewerPersona,
+    ReviewRound,
+    Stage,
+    UnderstandingCheck,
 )
 from .reviewer_personas import get_active_personas
 from .store import ProjectStore
 
 
 def _now() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 def create_server(base_dir: Path | None = None) -> FastMCP:
@@ -30,7 +36,7 @@ def create_server(base_dir: Path | None = None) -> FastMCP:
     # ── Project management ────────────────────────────────────────────────
 
     @mcp.tool()
-    def crucible_create_project(name: str, seed_idea: str, target_venue: Optional[str] = None) -> str:
+    def crucible_create_project(name: str, seed_idea: str, target_venue: str | None = None) -> str:
         """Create a new research project. Returns the project_id."""
         return store.create_project(name=name, seed_idea=seed_idea, target_venue=target_venue)
 
@@ -65,7 +71,9 @@ def create_server(base_dir: Path | None = None) -> FastMCP:
     # ── Experiments ───────────────────────────────────────────────────────
 
     @mcp.tool()
-    def crucible_add_experiment(project_id: str, name: str, script: str, results: Optional[str] = None) -> str:
+    def crucible_add_experiment(
+        project_id: str, name: str, script: str, results: str | None = None
+    ) -> str:
         """Add or update an experiment script. results is an optional JSON string."""
         results_dict = json.loads(results) if results else None
         store.add_experiment(project_id, name, script, results_dict)
@@ -102,7 +110,7 @@ def create_server(base_dir: Path | None = None) -> FastMCP:
         return store.log_review_round(project_id, round_)
 
     @mcp.tool()
-    def crucible_get_review_history(project_id: str, stage: Optional[str] = None) -> str:
+    def crucible_get_review_history(project_id: str, stage: str | None = None) -> str:
         """Get review round history as JSON. Optionally filter by stage."""
         history = store.get_review_history(project_id, stage)
         return json.dumps([r.model_dump(mode="json") for r in history], indent=2)
@@ -129,7 +137,9 @@ def create_server(base_dir: Path | None = None) -> FastMCP:
         return json.dumps([c.model_dump(mode="json") for c in concepts], indent=2)
 
     @mcp.tool()
-    def crucible_update_concept_status(project_id: str, concept_name: str, status: str, stage: str) -> str:
+    def crucible_update_concept_status(
+        project_id: str, concept_name: str, status: str, stage: Stage
+    ) -> str:
         """Update or add a concept's understanding status (encountered, explained, applied)."""
         store.update_concept_status(project_id, concept_name, ConceptStatus(status), stage)
         return f"Concept '{concept_name}' set to {status}."
@@ -144,7 +154,9 @@ def create_server(base_dir: Path | None = None) -> FastMCP:
         return "Assumption logged."
 
     @mcp.tool()
-    def crucible_update_assumption(project_id: str, assumption_id: str, is_explicit: bool, is_justified: bool) -> str:
+    def crucible_update_assumption(
+        project_id: str, assumption_id: str, is_explicit: bool, is_justified: bool
+    ) -> str:
         """Mark an assumption as explicitly stated and/or justified in the paper."""
         store.update_assumption(project_id, assumption_id, is_explicit, is_justified)
         return "Assumption updated."
@@ -168,7 +180,11 @@ def create_server(base_dir: Path | None = None) -> FastMCP:
             timestamp=_now(),
         )
         store.log_idea(project_id, idea)
-        return f"Idea captured: '{idea_text[:60]}...'" if len(idea_text) > 60 else f"Idea captured: '{idea_text}'"
+        return (
+            f"Idea captured: '{idea_text[:60]}...'"
+            if len(idea_text) > 60
+            else f"Idea captured: '{idea_text}'"
+        )
 
     @mcp.tool()
     def crucible_get_ideas_log(project_id: str) -> str:
@@ -179,7 +195,9 @@ def create_server(base_dir: Path | None = None) -> FastMCP:
     # ── Pivot evaluation ──────────────────────────────────────────────────
 
     @mcp.tool()
-    def crucible_log_pivot_evaluation(project_id: str, new_direction: str, outcome: str, rationale: str) -> str:
+    def crucible_log_pivot_evaluation(
+        project_id: str, new_direction: str, outcome: str, rationale: str
+    ) -> str:
         """Log a pivot evaluation decision. outcome must be 'pivot' or 'capture_and_continue'."""
         state = store.get_project(project_id)
         evaluation = PivotEvaluation(

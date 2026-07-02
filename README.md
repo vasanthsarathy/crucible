@@ -16,6 +16,12 @@
   <img alt="Built with uv" src="https://img.shields.io/badge/built_with-uv-27272a?style=flat-square&labelColor=18181b">
 </p>
 
+<br>
+
+<img src="assets/demo-placeholder.svg" alt="Crucible demo" width="720">
+
+<sub><a href="docs/recording-a-demo.md">▶ placeholder — how the real demo GIF gets recorded</a></sub>
+
 </div>
 
 ---
@@ -98,14 +104,22 @@ Plugin updates ship as version bumps in each plugin's `plugin.json`. To pull the
 /plugin marketplace update crucible
 ```
 
+## 📚 Documentation
+
+Deeper docs live in [`docs/`](docs/) — [architecture](docs/architecture.md) and a
+[per-skill reference](docs/README.md). Contributing? See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## 🗂️ Repository layout
 
 ```text
 crucible/                         ← this marketplace
 ├── .claude-plugin/
 │   └── marketplace.json          ← catalog of plugins
-├── assets/
-│   └── banner.svg                ← logo
+├── .github/                      ← CI, issue/PR templates
+├── assets/                       ← logo + demo
+├── docs/                         ← architecture + per-skill reference
+├── scripts/
+│   └── bump-version.sh           ← release helper
 └── plugins/
     └── crucible-rdd/             ← the RDD plugin (its own README, skills, MCP server)
 ```

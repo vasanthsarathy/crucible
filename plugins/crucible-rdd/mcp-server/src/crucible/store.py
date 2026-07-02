@@ -1,22 +1,29 @@
 from __future__ import annotations
+
 import json
-import uuid
 import re
-from datetime import datetime, timezone
+import uuid
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Optional
 
 from .models import (
-    ProjectState, ProjectSummary, ReviewRound, UnderstandingCheck,
-    Assumption, Idea, Concept, ConceptStatus, ReviewerPersona,
-    PivotEvaluation, Stage,
+    Assumption,
+    Concept,
+    ConceptStatus,
+    Idea,
+    ProjectState,
+    ProjectSummary,
+    ReviewerPersona,
+    ReviewRound,
+    Stage,
+    UnderstandingCheck,
 )
 
 STAGE_ORDER: list[Stage] = ["SEED", "PROBLEM", "SURVEY", "SOLUTION", "DEVELOP", "PAPER"]
 
 
 def _now() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 def _slug(text: str) -> str:
@@ -34,7 +41,7 @@ class ProjectStore:
 
     # ── Project management ───────────────────────────────────────────────
 
-    def create_project(self, name: str, seed_idea: str, target_venue: Optional[str] = None) -> str:
+    def create_project(self, name: str, seed_idea: str, target_venue: str | None = None) -> str:
         project_id = _slug(seed_idea)
         d = self._project_dir(project_id)
         d.mkdir(parents=True, exist_ok=True)
@@ -71,13 +78,15 @@ class ProjectStore:
             state_file = d / "state.json"
             if state_file.exists():
                 state = ProjectState.model_validate_json(state_file.read_text())
-                summaries.append(ProjectSummary(
-                    project_id=state.project_id,
-                    name=state.name,
-                    current_stage=state.current_stage,
-                    target_venue=state.target_venue,
-                    created_at=state.created_at,
-                ))
+                summaries.append(
+                    ProjectSummary(
+                        project_id=state.project_id,
+                        name=state.name,
+                        current_stage=state.current_stage,
+                        target_venue=state.target_venue,
+                        created_at=state.created_at,
+                    )
+                )
         return summaries
 
     def advance_stage(self, project_id: str) -> Stage:
@@ -114,7 +123,7 @@ class ProjectStore:
         path.write_text(round_.model_dump_json(indent=2))
         return round_.round_id
 
-    def get_review_history(self, project_id: str, stage: Optional[str] = None) -> list[ReviewRound]:
+    def get_review_history(self, project_id: str, stage: str | None = None) -> list[ReviewRound]:
         rounds_dir = self._project_dir(project_id) / "review_rounds"
         rounds = []
         for f in sorted(rounds_dir.glob("*.json")):
@@ -142,7 +151,9 @@ class ProjectStore:
         path = self._project_dir(project_id) / "concepts.json"
         return [Concept.model_validate(c) for c in json.loads(path.read_text())]
 
-    def update_concept_status(self, project_id: str, concept_name: str, status: ConceptStatus, stage: str) -> None:
+    def update_concept_status(
+        self, project_id: str, concept_name: str, status: ConceptStatus, stage: Stage
+    ) -> None:
         path = self._project_dir(project_id) / "concepts.json"
         concepts = json.loads(path.read_text())
         for c in concepts:
@@ -150,12 +161,14 @@ class ProjectStore:
                 c["status"] = status.value
                 path.write_text(json.dumps(concepts, indent=2))
                 return
-        concepts.append(Concept(
-            name=concept_name,
-            status=status,
-            stage_introduced=stage,
-            timestamp=_now(),
-        ).model_dump(mode="json"))
+        concepts.append(
+            Concept(
+                name=concept_name,
+                status=status,
+                stage_introduced=stage,
+                timestamp=_now(),
+            ).model_dump(mode="json")
+        )
         path.write_text(json.dumps(concepts, indent=2))
 
     # ── Assumptions ───────────────────────────────────────────────────────
@@ -170,7 +183,9 @@ class ProjectStore:
         path = self._project_dir(project_id) / "assumptions_log.json"
         return [Assumption.model_validate(a) for a in json.loads(path.read_text())]
 
-    def update_assumption(self, project_id: str, assumption_id: str, is_explicit: bool, is_justified: bool) -> None:
+    def update_assumption(
+        self, project_id: str, assumption_id: str, is_explicit: bool, is_justified: bool
+    ) -> None:
         path = self._project_dir(project_id) / "assumptions_log.json"
         assumptions = json.loads(path.read_text())
         for a in assumptions:
@@ -205,7 +220,9 @@ class ProjectStore:
 
     # ── Experiments ───────────────────────────────────────────────────────
 
-    def add_experiment(self, project_id: str, name: str, script: str, results: Optional[dict] = None) -> None:
+    def add_experiment(
+        self, project_id: str, name: str, script: str, results: dict | None = None
+    ) -> None:
         exp_dir = self._project_dir(project_id) / "experiments"
         (exp_dir / f"{name}.py").write_text(script)
         if results is not None:

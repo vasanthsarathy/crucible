@@ -1,9 +1,9 @@
-import json
+from datetime import UTC, datetime
+
 import pytest
-from pathlib import Path
-from datetime import datetime, timezone
+
+from crucible.models import ReviewerFeedback, ReviewRound, ReviewVerdict, UnderstandingCheck
 from crucible.store import ProjectStore
-from crucible.models import ReviewRound, ReviewerFeedback, ReviewVerdict, UnderstandingCheck
 
 
 @pytest.fixture
@@ -86,7 +86,7 @@ def test_log_and_get_review_round(store):
         reviews=reviews,
         devil_advocate_text="worst paper",
         gate_result="fail",
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
     )
     store.log_review_round(project_id, round_)
     history = store.get_review_history(project_id)
@@ -102,7 +102,7 @@ def test_log_and_get_understanding_check(store):
         question="Why is this hard?",
         answer="Because of NP-hardness",
         assessment="clear",
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
     )
     store.log_understanding_check(project_id, check)
     history = store.get_understanding_history(project_id)

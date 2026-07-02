@@ -1,9 +1,13 @@
+from datetime import UTC, datetime
+
 from crucible.models import (
-    ProjectState, ReviewRound, ReviewerFeedback, ReviewVerdict,
-    UnderstandingCheck, Assumption, Idea, Concept, ConceptStatus,
-    ReviewerPersona, VenueProfile, Paper,
+    Concept,
+    ConceptStatus,
+    ProjectState,
+    ReviewerFeedback,
+    ReviewRound,
+    ReviewVerdict,
 )
-from datetime import datetime, timezone
 
 
 def test_project_state_roundtrip():
@@ -13,8 +17,8 @@ def test_project_state_roundtrip():
         seed_idea="A seed idea",
         target_venue="NeurIPS",
         current_stage="SEED",
-        created_at=datetime.now(timezone.utc),
-        updated_at=datetime.now(timezone.utc),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
     json_str = state.model_dump_json()
     restored = ProjectState.model_validate_json(json_str)
@@ -37,7 +41,7 @@ def test_review_round_gate_result():
         devil_advocate_text="weakest paper ever",
         reviews=[feedback],
         gate_result="fail",
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
     )
     assert round_.gate_result == "fail"
     assert round_.reviews[0].verdict == ReviewVerdict.REJECT
@@ -48,6 +52,6 @@ def test_concept_status_enum():
         name="IID assumption",
         status=ConceptStatus.ENCOUNTERED,
         stage_introduced="PROBLEM",
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
     )
     assert concept.status == ConceptStatus.ENCOUNTERED

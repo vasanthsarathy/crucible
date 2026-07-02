@@ -6,6 +6,21 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Engineering rigor: `ruff` (lint + format) and `mypy` config, both enforced in CI
+  and via a `.pre-commit-config.yaml`.
+- Contributor infrastructure: `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`,
+  and GitHub issue / PR templates.
+- Release automation: `scripts/bump-version.sh` keeps the version in sync across
+  `plugin.json` and `marketplace.json`; the marketplace entry now carries `version`.
+- Documentation: `docs/` with an architecture overview and a per-skill reference.
+- README demo placeholder (`assets/demo-placeholder.svg`) + `docs/recording-a-demo.md`.
+
+### Changed
+- The `crucible_update_concept_status` MCP tool now validates the `stage` argument
+  against the allowed stages (typed `Stage`) instead of accepting any string.
+- Modernized reviewer/venue enums to `enum.StrEnum`.
+
 ## [0.1.0] - 2026-07-02
 
 Initial public release.
