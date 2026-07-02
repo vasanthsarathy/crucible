@@ -71,3 +71,9 @@ def test_every_persona_has_excellence_and_axis():
 def test_socrates_is_intellectual_honesty():
     socrates = next(p for p in BUILTIN_PERSONAS if p.reviewer_id == "socrates")
     assert "honest" in socrates.lens.lower() or "honest" in socrates.evaluation_focus.lower()
+
+
+def test_venue_notes_mention_axes():
+    # Notes should reflect the soundness/significance framing, not the old vote language.
+    acl = VENUE_PROFILES["ACL"].notes.lower()
+    assert "soundness" in acl and "excitement" in acl
