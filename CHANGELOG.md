@@ -13,7 +13,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   and GitHub issue / PR templates.
 - Release automation: `scripts/bump-version.sh` keeps the version in sync across
   `plugin.json` and `marketplace.json`; the marketplace entry now carries `version`.
-- Documentation: `docs/` with an architecture overview and a per-skill reference.
+- Documentation: `docs/` with an architecture overview and a per-skill reference;
+  a canonical seed-to-first-gate walkthrough in the plugin README.
 - README demo placeholder (`assets/demo-placeholder.svg`) + `docs/recording-a-demo.md`.
 
 ### Changed

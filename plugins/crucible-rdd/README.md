@@ -41,6 +41,78 @@ From there, the loop is:
 
 ---
 
+## 🔬 A walkthrough
+
+*What using Crucible actually feels like, from seed to first gate. Illustrative —
+the reviewers are AI personas, so exact wording varies run to run.*
+
+**You have a hunch.** In your project folder you run:
+
+```text
+/crucible:start
+```
+
+Claude asks for your seed. You type something rough:
+
+> "I think attention heads that survive causal tracing are the ones worth keeping — maybe that's a pruning criterion."
+
+Before anything else, two reviewers gut-check whether this is worth your time.
+**Flash** (60-second scan) is intrigued — it hasn't seen exactly this framing.
+**Copernicus** (significance) says proceed, but warns you'll have to beat magnitude
+pruning. Crucible writes the project state under `.crucible/` and drops you at the
+first stage: **PROBLEM**.
+
+**You develop the problem.** With Claude you write down what you're actually
+claiming, why head-pruning is hard, and what a real solution would look like. When
+you want a reality check — not a gate, just feedback — you don't type a command,
+you just ask:
+
+> "How would reviewers react to this problem statement?"
+
+Crucible **auto-runs a reviewer round** (this skill fires on its own; only the
+gates are manual). Seven personas read it in turn:
+
+- **Archimedes** (rigor): *"Define 'survive causal tracing' precisely. What threshold, what metric?"*
+- **Edison** (evidence): *"Which models? Where's the baseline you'll compare against?"*
+- **Orwell** (clarity): *"'Worth keeping' is vague — worth keeping for what task?"*
+- **Socrates** (assumptions): *"You assume causal importance is stable across inputs. Is it?"*
+
+You tighten the problem in response. Nothing has to be perfect — but the hand-waves
+are now visible.
+
+**You try to advance.** When you think PROBLEM is solid, you make it explicit:
+
+```text
+/crucible:advance
+```
+
+Crossing a gate is deliberate by design — it's your call, never Claude's. First
+comes a **Devil's Advocate pass**: Claude argues as hard as it can *against* your
+contribution. Then the panel votes. Say 4 of the 5 voting reviewers give
+accept/revise — the gate passes. But Linnaeus and Socrates always leave required
+revisions, and Socrates' stability worry gets logged as something you must address
+in SURVEY.
+
+Then the part most tools skip — a **Socratic probe**. Claude asks you, from memory:
+
+> "Explain in your own words why magnitude pruning would fail here — without looking at your draft."
+
+You answer. If you're fuzzy, the gap is logged and you stay put until you can
+articulate it. You can — so PROBLEM closes and Crucible advances you to **SURVEY**.
+
+**Into the literature.** In SURVEY, **Linnaeus** actually searches arXiv and
+Semantic Scholar (with the MCP server running), surfacing the two papers you'd have
+been embarrassed to miss. A stray thought strikes mid-survey — you say *"log this
+idea: try this on MLP neurons too"* and it's parked in the ideas log without
+derailing you.
+
+**That's the loop.** Develop → get pushed back on → address it → prove you
+understand it → advance. Repeat through SOLUTION, DEVELOP, and PAPER. Any time,
+`/crucible:status` shows where you stand — current stage, the last reviewer
+verdicts, and which concepts you've truly nailed versus only encountered.
+
+---
+
 ## 🚦 Workflow Stages
 
 ```text
