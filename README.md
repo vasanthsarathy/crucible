@@ -96,6 +96,17 @@ Everything lives in `.crucible/` as Markdown + JSON. Version-controllable, no se
 ➡️ Full details, skill reference, and venue profiles in the
 [**plugin README**](plugins/crucible-rdd/README.md).
 
+## 🔬 In practice
+
+You start with a rough hunch. Crucible gut-checks whether it's worth pursuing, then
+walks you stage by stage — and at each one a panel of seven adversarial reviewers
+(plus a Devil's Advocate pass and a Socratic probe) tries to stop you. You advance
+only when the work survives *and* you can explain it back from memory. Just ask
+*"how would reviewers react?"* and the panel weighs in; you cross a gate only when
+you choose to.
+
+➡️ **[Read the full seed-to-first-gate walkthrough →](plugins/crucible-rdd/README.md#-a-walkthrough)**
+
 ## 🔄 Updating
 
 Plugin updates ship as version bumps in each plugin's `plugin.json`. To pull the latest:
