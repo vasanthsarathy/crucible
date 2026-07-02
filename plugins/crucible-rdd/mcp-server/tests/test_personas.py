@@ -35,3 +35,19 @@ def test_get_venue_weights_for_iclr():
     weights = get_venue_weights("ICLR")
     assert weights["archimedes"] > 1.0
     assert weights["edison"] > 1.0
+
+
+def test_no_persona_rejects_by_default():
+    for p in BUILTIN_PERSONAS:
+        assert "reject" not in p.default_stance.lower(), p.reviewer_id
+
+
+def test_every_persona_has_excellence_and_axis():
+    for p in BUILTIN_PERSONAS:
+        assert p.excellence_signal, p.reviewer_id
+        assert p.axis in {"soundness", "significance", "cross_cutting"}
+
+
+def test_socrates_is_intellectual_honesty():
+    socrates = next(p for p in BUILTIN_PERSONAS if p.reviewer_id == "socrates")
+    assert "honest" in socrates.lens.lower() or "honest" in socrates.evaluation_focus.lower()
