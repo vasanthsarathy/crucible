@@ -26,4 +26,4 @@ jobs:
         uses: astral-sh/setup-uv@v5
       - name: Run pytest
         working-directory: plugins/crucible-rdd/mcp-server
-        run: uv run python -m pytest -q
+        run: uv run --extra dev python -m pytest -q
