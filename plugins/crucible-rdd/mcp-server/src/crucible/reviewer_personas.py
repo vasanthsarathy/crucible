@@ -119,6 +119,36 @@ BUILTIN_PERSONAS: list[ReviewerPersona] = [
         default_stance="Assumes every claim has an unstated condition; rewards candor and precise scoping; flags overclaiming, not honesty. Produces findings, not a verdict.",
         is_voting=False,
     ),
+    ReviewerPersona(
+        reviewer_id="cicero",
+        name="Cicero",
+        lens="The strongest case for the work",
+        axis="significance",
+        role="champion",
+        evaluation_focus="What is genuinely good here? Who will build on it? What is the best version of this contribution?",
+        excellence_signal="Articulates the nugget and the paper's real strengths as a committed champion reviewer would.",
+        anti_heuristics=[
+            "Sycophancy — praise without substance",
+            "Champion work that has a fatal, specific soundness flaw",
+        ],
+        default_stance="Advocates: surfaces the strongest honest case for acceptance. A signal to weigh, never a rubber stamp. Produces findings, not a verdict.",
+        is_voting=False,
+    ),
+    ReviewerPersona(
+        reviewer_id="rawls",
+        name="Rawls",
+        lens="Ethics and societal impact",
+        axis="cross_cutting",
+        role="ethics",
+        evaluation_focus="Data collection and consent, dual-use / potential for abuse, fairness and harms to groups, honest broader impact.",
+        excellence_signal="Risks acknowledged and addressed; responsible-research diligence.",
+        anti_heuristics=[
+            "Treat an honest broader-impact statement as grounds to reject",
+            "Make independent legal judgments",
+        ],
+        default_stance="Raises an ethics-review flag when warranted; non-punitive — answering 'no' is not grounds for rejection. Produces findings, not a verdict.",
+        is_voting=False,
+    ),
 ]
 
 _PERSONA_MAP = {p.reviewer_id: p for p in BUILTIN_PERSONAS}
