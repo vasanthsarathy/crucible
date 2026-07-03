@@ -67,7 +67,7 @@ Append this output to `.crucible/<project-id>/sections/survey.md` under a `## Fi
 
 Run the complete reviewer round as defined in `crucible:reviewer-round` — all nine reviewers, Devil's Advocate pass, full structured feedback.
 
-Note: Flash's verdict is INTRIGUED rather than ACCEPT/REJECT — treat INTRIGUED as a positive significance signal and REJECT as a significance concern to be weighed on its merits, not tallied.
+Note: Flash emits INTRIGUED (its positive verdict, in place of ACCEPT) or REJECT — treat INTRIGUED as a positive significance signal and a REJECT as a significance concern weighed on its merits, not tallied.
 
 ## Step 5: Area Chair Synthesis (Athena)
 
@@ -80,7 +80,7 @@ Once all nine reviewers have spoken, step into the role of Athena, the Area Chai
 
 **Produce two separate verdicts — never collapse them into one score or one number:**
 
-1. **Soundness verdict** (`ACCEPT` | `REVISE` | `BLOCK`) — grounded primarily in Archimedes and Edison, informed by Socrates and Linnaeus.
+1. **Soundness verdict** (`ACCEPT` | `REVISE` | `BLOCK`) — grounded primarily in Archimedes and Edison, informed by Socrates.
 2. **Significance/excitement verdict** (`BELOW BAR` | `MEETS BAR` | `EXCEEDS BAR`) — grounded primarily in Flash, Copernicus, and Cicero's case.
 
 **How Athena weighs arguments:**

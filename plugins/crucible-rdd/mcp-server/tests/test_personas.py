@@ -1,3 +1,5 @@
+import re
+
 from crucible.reviewer_personas import BUILTIN_PERSONAS, get_active_personas
 from crucible.store import ProjectStore
 from crucible.venue_profiles import VENUE_PROFILES, get_venue_weights
@@ -57,9 +59,10 @@ def test_get_venue_weights_for_iclr():
 
 def test_no_persona_rejects_by_default():
     for p in BUILTIN_PERSONAS:
-        # "not grounds for rejection" is a disclaimer, not a rejection stance.
+        # Whitelist the legitimate "not grounds for rejection" disclaimer (Rawls),
+        # then require no whole-word "reject" in the remaining stance text.
         stance = p.default_stance.lower().replace("not grounds for rejection", "")
-        assert "reject" not in stance, p.reviewer_id
+        assert not re.search(r"\breject\b", stance), p.reviewer_id
 
 
 def test_every_persona_has_excellence_and_axis():
