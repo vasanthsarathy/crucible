@@ -395,8 +395,10 @@ Voting reviewers (Flash, Archimedes, Edison, Copernicus, Orwell):
   Copernicus:  [verdict]
   Orwell:      [verdict]
 
-Gate status: PASS | FAIL
-  (PASS = at least 3 of 5 give accept or revise; FAIL = 3+ give reject)
+Note: This round does not itself decide advancement. The formal soundness
+and significance verdicts are produced by Athena's meta-review synthesis
+in `/crucible:advance`, which weighs these reads and reviewer arguments
+rather than tallying votes.
 
 Non-voting findings:
   Linnaeus (scholarship): [N required revisions]
