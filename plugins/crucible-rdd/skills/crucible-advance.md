@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Advancing to the Next Stage
 
-You are checking whether the researcher is ready to advance from their current stage. Two gates must pass: (1) reviewer panel gate, (2) Socratic understanding probe.
+You are checking whether the researcher is ready to advance from their current stage. Two gates must pass: (1) reviewer panel gate, decided by an Area Chair meta-review synthesis (not a vote count), (2) Socratic understanding probe.
 
 ## Step 0: Check for MCP
 
@@ -65,38 +65,87 @@ Append this output to `.crucible/<project-id>/sections/survey.md` under a `## Fi
 
 ## Step 4: Run Full Reviewer Gate Round
 
-Run the complete reviewer round as defined in `crucible:reviewer-round` — all seven reviewers, Devil's Advocate pass, full structured feedback.
+Run the complete reviewer round as defined in `crucible:reviewer-round` — all nine reviewers, Devil's Advocate pass, full structured feedback.
 
-**Gate evaluation:**
-Count votes from the five voting reviewers (Flash, Archimedes, Edison, Copernicus, Orwell):
-- `accept` = 1 pass vote
-- `revise` = 1 pass vote
-- `reject` = 1 fail vote
+Note: Flash emits INTRIGUED (its positive verdict, in place of ACCEPT) or REJECT — treat INTRIGUED as a positive significance signal and a REJECT as a significance concern weighed on its merits, not tallied.
 
-Note: Flash uses INTRIGUED instead of ACCEPT — treat INTRIGUED as a pass vote in the gate count.
+## Step 5: Area Chair Synthesis (Athena)
 
-**Gate passes** if: ≥ 3 pass votes AND ≤ 2 reject votes.
-**Gate fails** if: ≥ 3 reject votes.
+Once all nine reviewers have spoken, step into the role of Athena, the Area Chair. Athena wrote no individual review. Her job is to weigh the panel's substantiated arguments, not count their votes.
 
-Linnaeus and Socrates always produce required revisions. Even if the voting gate passes, their findings must be addressed before advancing (unless the researcher's advisor role overrides).
+**Collect:**
+- All nine reviewer outputs (voting: Flash, Archimedes, Edison, Copernicus, Orwell; findings-only: Linnaeus, Socrates, Cicero, Rawls).
+- Cicero's case for the work (champion).
+- Rawls's ethics flags.
 
-## Step 5: If Gate Fails — Return Required Changes
+**Produce two separate verdicts — never collapse them into one score or one number:**
+
+1. **Soundness verdict** (`ACCEPT` | `REVISE` | `BLOCK`) — grounded primarily in Archimedes and Edison, informed by Socrates.
+2. **Significance/excitement verdict** (`BELOW BAR` | `MEETS BAR` | `EXCEEDS BAR`) — grounded primarily in Flash, Copernicus, and Cicero's case.
+
+**How Athena weighs arguments:**
+- A **specific, load-bearing soundness fault** — a broken proof, an unsupported main claim, an experiment that doesn't test what it claims to — is a dealbreaker for the soundness verdict even if only *one* reviewer raised it. One precise, substantiated objection outweighs several vague ones.
+- **Discount** vague, hedged, or low-confidence negativity ("this feels incremental," "not sure this is novel," with no specifics given) — it does not move either verdict.
+- **Discard entirely** any objection that matches the shared anti-heuristics list (not-novel-without-citation, not-SOTA, too-simple, "could also run X," limitations-as-weakness, and the rest) — these are illegitimate regardless of which reviewer raised them or how many did.
+- **Reward honesty.** Candor about limitations, precisely scoped claims, and an honest broader-impact statement must never lower either verdict — they are evidence of a trustworthy contribution, not liabilities.
+- **Weigh Cicero's case explicitly.** If Cicero has built a strong, substantiated case for the work, name it in the synthesis and state whether it moves the significance verdict.
+- **Address Rawls's flags non-punitively.** Decide whether an ethics flag needs disclosure or author response. An honest "here is the risk, and here is how we considered it" is never grounds to block.
+- **Escalating bar for blocking championed work.** If the soundness reviewers are largely satisfied and Cicero has made a strong case, a concern trying to block advancement must be specific and load-bearing — "at the level of a full review," not a stray sentence. A single vague reservation cannot override sound, well-championed work.
+
+**Gate passes** if: no unresolved dealbreaker soundness fault (soundness verdict is `ACCEPT` or `REVISE`, not `BLOCK`) AND the significance verdict clears the venue's bar (`MEETS BAR` or `EXCEEDS BAR`, not `BELOW BAR`).
+
+**Gate fails** if: the soundness verdict is `BLOCK` OR the significance verdict is `BELOW BAR`.
+
+Linnaeus and Socrates always produce required revisions. Even if the gate passes, their findings must be addressed before advancing (unless the researcher's advisor role overrides).
+
+Produce Athena's synthesis as a meta-review, not a tally:
+
+```
+AREA CHAIR SYNTHESIS (Athena)
+==============================
+SOUNDNESS VERDICT: ACCEPT | REVISE | BLOCK
+  Reasoning: [the specific, substantiated arguments that drove this — cite the reviewer]
+  Dealbreaker fault (if BLOCK): [the exact load-bearing fault, and who raised it]
+
+SIGNIFICANCE VERDICT: BELOW BAR | MEETS BAR | EXCEEDS BAR
+  Reasoning: [the specific arguments that drove this — cite the reviewer]
+  Cicero's case: [summarize it, and state whether it moved the verdict]
+
+Discounted objections (vague/low-confidence — did not move a verdict):
+  - [objection] — [why discounted]
+
+Discarded objections (matched the shared anti-heuristics list):
+  - [objection] — [which anti-heuristic]
+
+Rawls's flags: [none | flag(s) and how addressed: disclosure required | proceed as-is]
+
+GATE: PASS | FAIL
+```
+
+## Step 6: If Gate Fails — Return Required Changes
 
 If the gate fails, produce:
 
 ```
 GATE: FAIL (stage not advanced)
 ================================
-Voting result: [N/5 pass votes]
-Reviewers who rejected: [list]
+Soundness verdict: [ACCEPT | REVISE | BLOCK]
+Significance verdict: [BELOW BAR | MEETS BAR | EXCEEDS BAR]
+
+DECISIVE CONCERNS (specific, load-bearing arguments that blocked advancement):
+  - [concern — and which reviewer raised it]
+  - [concern]
+
+REASONS TO ADVANCE (Cicero's case and other genuine strengths, weighed but outweighed):
+  - [reason]
 
 REQUIRED BEFORE RETRYING:
-  Critical (must fix):
-    - [specific action from rejecting reviewers]
+  Critical (must fix — tied to a decisive concern):
     - [specific action]
-  
+    - [specific action]
+
   Recommended (address to strengthen):
-    - [suggestion from revise reviewers]
+    - [suggestion]
     - [suggestion]
 
 Linnaeus required revisions: [N items — list them]
@@ -107,7 +156,7 @@ Come back with crucible:advance after addressing these.
 
 Do not advance the stage. Do not modify `stage_history.json`.
 
-## Step 6: If Gate Passes — Run Socratic Probe
+## Step 7: If Gate Passes — Run Socratic Probe
 
 Congratulate the reviewer gate result, then say: "Before we advance, I want to make sure you've genuinely internalized this stage's work. I'll ask you a few questions — answer in your own words without looking at the draft."
 
@@ -154,7 +203,7 @@ Log each probe to `.crucible/<project-id>/understanding_log/<timestamp>-<stage>-
 
 **Probe passes** if all questions receive `clear` or `partial` assessments (gaps resolved through clarification).
 
-## Step 7: If Probe Fails — Teach and Retry
+## Step 8: If Probe Fails — Teach and Retry
 
 If any question reveals a genuine gap that cannot be resolved in conversation, say:
 
@@ -172,7 +221,7 @@ Try again: [repeat the question]
 
 Do not advance until the probe passes.
 
-## Step 8: Advance Stage
+## Step 9: Advance Stage
 
 If both gate and probe pass:
 

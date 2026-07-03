@@ -8,18 +8,22 @@ Whenever you want feedback — **not just at gates**. Early and often is cheaper
 
 ## What it does
 
-Sequentially embodies the seven reviewer personas, each reading the specified
-sections through its distinct lens and default-skeptical stance:
+Sequentially embodies the nine reviewer personas, each reading the specified
+sections through its distinct lens, axis (soundness or significance), and
+default stance — including Cicero, a champion voice arguing the strongest honest
+case for the work, and Rawls, an ethics and societal-impact voice:
 
-| Reviewer | Lens | Votes? |
-| --- | --- | --- |
-| Flash | 60-second scan | ✓ |
-| Archimedes | theory & rigor | ✓ |
-| Edison | empirical evidence | ✓ |
-| Copernicus | significance & novelty | ✓ |
-| Orwell | clarity & presentation | ✓ |
-| Linnaeus | scholarship & positioning (live search) | findings only |
-| Socrates | assumption auditing | findings only |
+| Reviewer | Lens | Axis | Votes? |
+| --- | --- | --- | --- |
+| Flash | 60-second scan | significance | ✓ |
+| Archimedes | theory & rigor | soundness | ✓ |
+| Edison | empirical evidence | soundness | ✓ |
+| Copernicus | significance & novelty | significance | ✓ |
+| Orwell | clarity & presentation | cross-cutting | ✓ |
+| Linnaeus | scholarship & positioning (live search) | cross-cutting | findings only |
+| Socrates | assumption auditing | cross-cutting | findings only |
+| Cicero | champion — strongest case for the work | significance | findings only |
+| Rawls | ethics & societal impact | cross-cutting | findings only |
 
 The round is logged so [`crucible:status`](status.md) and [`crucible:advance`](advance.md)
 can reference the latest verdicts.

@@ -5,6 +5,7 @@ from crucible.models import (
     ConceptStatus,
     ProjectState,
     ReviewerFeedback,
+    ReviewerPersona,
     ReviewRound,
     ReviewVerdict,
 )
@@ -55,3 +56,37 @@ def test_concept_status_enum():
         timestamp=datetime.now(UTC),
     )
     assert concept.status == ConceptStatus.ENCOUNTERED
+
+
+def test_reviewer_persona_new_fields_have_defaults():
+    # Backward compat: legacy persona JSON lacks the new fields.
+    p = ReviewerPersona.model_validate(
+        {
+            "reviewer_id": "legacy",
+            "name": "Legacy",
+            "lens": "x",
+            "evaluation_focus": "y",
+            "default_stance": "z",
+        }
+    )
+    assert p.axis == "cross_cutting"
+    assert p.role == "reviewer"
+    assert p.excellence_signal == ""
+    assert p.anti_heuristics == []
+
+
+def test_reviewer_persona_accepts_new_fields():
+    p = ReviewerPersona(
+        reviewer_id="t",
+        name="T",
+        lens="l",
+        evaluation_focus="e",
+        default_stance="s",
+        axis="soundness",
+        role="champion",
+        excellence_signal="great",
+        anti_heuristics=["no SOTA reflex"],
+    )
+    assert p.axis == "soundness"
+    assert p.role == "champion"
+    assert p.anti_heuristics == ["no SOTA reflex"]

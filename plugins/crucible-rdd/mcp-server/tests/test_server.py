@@ -92,4 +92,4 @@ async def test_get_reviewer_personas(server):
     pid = result.content[0].text
     result2 = await ToolResult.call(server, "crucible_get_reviewer_personas", {"project_id": pid})
     personas = json.loads(result2.content[0].text)
-    assert len(personas) == 7
+    assert len(personas) == 9

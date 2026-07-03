@@ -22,6 +22,8 @@ class ConceptStatus(StrEnum):
 
 Stage = Literal["SEED", "PROBLEM", "SURVEY", "SOLUTION", "DEVELOP", "PAPER"]
 GateResult = Literal["pass", "fail"]
+ReviewAxis = Literal["soundness", "significance", "cross_cutting"]
+ReviewerRole = Literal["reviewer", "champion", "ethics"]
 
 
 class ProjectState(BaseModel):
@@ -101,7 +103,11 @@ class ReviewerPersona(BaseModel):
     lens: str
     evaluation_focus: str
     default_stance: str
-    is_voting: bool = True  # False for Linnaeus and Socrates
+    axis: ReviewAxis = "cross_cutting"
+    role: ReviewerRole = "reviewer"
+    excellence_signal: str = ""
+    anti_heuristics: list[str] = []
+    is_voting: bool = True  # False for findings-only, champion, and ethics
     is_custom: bool = False  # True if added per-project
 
 

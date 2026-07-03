@@ -1,6 +1,6 @@
 {
   "name": "crucible-rdd",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Crucible — Review-driven Development for AI/ML research papers. Run your work through an adversarial reviewer panel at every stage. Skills-primary: works standalone, enriched by optional MCP server.",
   "author": {"name": "vasanthsarathy", "email": "vsarathy@gmail.com"},
   "license": "MIT",

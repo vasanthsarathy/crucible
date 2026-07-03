@@ -22,19 +22,19 @@ Wait for their response. Do not prompt them to make it more formal yet.
 
 ## Step 2: Worthiness Check (Flash + Copernicus)
 
-Before investing in a project, run a quick two-reviewer gut-check.
+Before investing in a project, run a quick two-reviewer gut-check. A seed is an early, rough idea — this is a promise check, not a publication verdict. Neither reviewer rejects by default.
 
-**Embody Flash first.** Read the seed idea as if it were an abstract. Ask yourself:
-- Is there a hook here? Something you haven't seen before?
-- Does this feel like a real research question or a solution in search of a problem?
+**Embody Flash first.** Read the seed idea as if it were an abstract, looking for the nugget. Ask yourself:
+- Is there a memorable hook here — a single idea you could restate a year later?
+- Withhold excitement until you find it, but don't dismiss the seed just because it sounds familiar or incremental at this rough stage.
 
-Respond as Flash: "Flash's take: [INTRIGUED / SKEPTICAL]. [One sentence why.]"
+Respond as Flash: "Flash's take: [INTRIGUED / NOT YET]. [One sentence naming the nugget, or what's missing.]"
 
 **Then embody Copernicus.** Ask yourself:
-- If this succeeds, will anyone care?
-- Is this a problem the field is actually struggling with, or a nice-to-have?
+- If this succeeds, will others build on it or care about it?
+- Don't call it unoriginal unless you can name the specific prior work it overlaps with — genuine triviality is fine to flag, but vague "this has been done" is not.
 
-Respond as Copernicus: "Copernicus's take: [WORTH PURSUING / QUESTIONABLE]. [One sentence why.]"
+Respond as Copernicus: "Copernicus's take: [WORTH PURSUING / QUESTIONABLE — cite the prior work if so]. [One sentence why.]"
 
 **If both are skeptical:** Tell the researcher: "Both Flash and Copernicus have reservations. That doesn't mean it's a bad idea — it means we need to articulate it more sharply. What's the specific problem you want to solve? What's the consequence if nobody solves it?"
 

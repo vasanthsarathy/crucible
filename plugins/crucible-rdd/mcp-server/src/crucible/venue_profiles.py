@@ -8,13 +8,13 @@ VENUE_PROFILES: dict[str, VenueProfile] = {
         reviewer_weights={
             "flash": 1.0,
             "archimedes": 1.2,
-            "edison": 1.2,
+            "edison": 1.3,
             "copernicus": 1.3,
             "linnaeus": 1.0,
             "orwell": 1.0,
             "socrates": 1.0,
         },
-        notes="Balanced across all dimensions. Copernicus weighted for significance. Strong emphasis on insight conveyed.",
+        notes="Significance scored co-equal with soundness; reproducibility and honest limitations rewarded.",
     ),
     "ICLR": VenueProfile(
         venue="ICLR",
@@ -27,7 +27,7 @@ VENUE_PROFILES: dict[str, VenueProfile] = {
             "orwell": 1.0,
             "socrates": 1.1,
         },
-        notes="Heaviest emphasis on reproducibility and rigor. Open review culture demands transparency.",
+        notes="Contribution-dominant; clarity is scored; rebuttal responsiveness valued. Soundness and rigor high.",
     ),
     "ICML": VenueProfile(
         venue="ICML",
@@ -40,20 +40,20 @@ VENUE_PROFILES: dict[str, VenueProfile] = {
             "orwell": 1.0,
             "socrates": 1.0,
         },
-        notes="Strong theory + empirics balance. Clarity valued.",
+        notes="Theory + empirics balance; claim calibration foregrounded.",
     ),
     "ACL": VenueProfile(
         venue="ACL",
         reviewer_weights={
             "flash": 1.0,
             "archimedes": 1.0,
-            "edison": 1.2,
+            "edison": 1.3,
             "copernicus": 1.1,
-            "linnaeus": 1.4,
+            "linnaeus": 1.5,
             "orwell": 1.4,
             "socrates": 1.0,
         },
-        notes="Thorough related work and clear writing are paramount. Linguistic insight valued alongside metrics.",
+        notes="Soundness and excitement scored separately; ethics and reproducibility first-class.",
     ),
     "EMNLP": VenueProfile(
         venue="EMNLP",
@@ -66,7 +66,7 @@ VENUE_PROFILES: dict[str, VenueProfile] = {
             "orwell": 1.3,
             "socrates": 1.0,
         },
-        notes="Similar to ACL. Reproducibility emphasized.",
+        notes="Like ACL: soundness vs excitement split; reproducibility emphasized.",
     ),
     "CVPR": VenueProfile(
         venue="CVPR",
@@ -79,7 +79,7 @@ VENUE_PROFILES: dict[str, VenueProfile] = {
             "orwell": 1.0,
             "socrates": 1.0,
         },
-        notes="Benchmarking rigor critical. Visual quality and comparison completeness emphasized.",
+        notes="Benchmarking rigor critical. Visual quality and comparison completeness emphasized. (taste inferred; not open-review).",
     ),
     "AAAI": VenueProfile(
         venue="AAAI",
@@ -92,7 +92,7 @@ VENUE_PROFILES: dict[str, VenueProfile] = {
             "orwell": 1.1,
             "socrates": 1.0,
         },
-        notes="Broad AI scope. Significance and scholarship both weighted.",
+        notes="Broad AI scope. Significance and scholarship both weighted. (taste inferred; not open-review).",
     ),
     "Nature": VenueProfile(
         venue="Nature",
@@ -105,7 +105,7 @@ VENUE_PROFILES: dict[str, VenueProfile] = {
             "orwell": 1.3,
             "socrates": 1.1,
         },
-        notes="Broad significance required. Copernicus dominant. Orwell critical — Nature requires non-specialist accessibility.",
+        notes="Broad significance required. Copernicus dominant. Orwell critical — Nature requires non-specialist accessibility. (taste inferred; not open-review).",
     ),
     "TMLR": VenueProfile(
         venue="TMLR",
@@ -118,7 +118,7 @@ VENUE_PROFILES: dict[str, VenueProfile] = {
             "orwell": 1.1,
             "socrates": 1.2,
         },
-        notes="Reproducibility and transparency paramount. Rolling review. Flash weighted down — TMLR values thorough work over novelty framing.",
+        notes="Soundness over excitement; correctness and thoroughness valued over novelty framing (Flash down-weighted).",
     ),
 }
 
