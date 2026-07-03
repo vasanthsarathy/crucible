@@ -69,9 +69,9 @@ Each gate must be passed by the reviewer panel before you advance — no skippin
 </td>
 <td width="50%" valign="top">
 
-**🎭 Seven reviewer personas**
+**🎭 Nine reviewer personas**
 
-Flash · Archimedes · Edison · Copernicus · Orwell · Linnaeus · Socrates — each with a fixed lens and a default stance built to resist sycophancy.
+Flash · Archimedes · Edison · Copernicus · Orwell · Linnaeus · Socrates, plus **Cicero** (the champion, arguing the strongest case for the work) and **Rawls** (ethics and societal impact) — each with a fixed lens and a default stance built to resist sycophancy.
 
 </td>
 </tr>
@@ -99,7 +99,7 @@ Everything lives in `.crucible/` as Markdown + JSON. Version-controllable, no se
 ## 🔬 In practice
 
 You start with a rough hunch. Crucible gut-checks whether it's worth pursuing, then
-walks you stage by stage — and at each one a panel of seven adversarial reviewers
+walks you stage by stage — and at each one a panel of nine adversarial reviewers
 (plus a Devil's Advocate pass and a Socratic probe) tries to stop you. You advance
 only when the work survives *and* you can explain it back from memory. Just ask
 *"how would reviewers react?"* and the panel weighs in; you cross a gate only when

@@ -30,9 +30,11 @@ search. This is the "Step 0: Check for MCP" block at the top of every skill.
 Work moves through stages `SEED → PROBLEM → SURVEY → SOLUTION → DEVELOP → PAPER`.
 Advancing is gated twice, both enforced by [`crucible:advance`](skills/advance.md):
 
-1. **Reviewer gate** — the seven-persona panel evaluates the stage. At least 3 of
-   the 5 voting reviewers must give accept/revise with no outright reject.
-   Linnaeus and Socrates always contribute required revisions.
+1. **Reviewer gate** — the nine-persona panel evaluates the stage, then **Athena**,
+   the Area Chair, synthesizes their arguments into two separate verdicts —
+   soundness and significance — rather than counting votes. The gate passes when
+   soundness has no unresolved, load-bearing fault and significance clears the
+   venue's bar. Linnaeus and Socrates always contribute required revisions.
 2. **Socratic probe** — you answer 2–3 open questions from memory. Gaps are logged;
    the stage doesn't advance until understanding is demonstrated.
 

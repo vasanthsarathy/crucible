@@ -11,7 +11,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-ea580c?style=flat-square&labelColor=18181b">
   <img alt="Claude Code plugin" src="https://img.shields.io/badge/claude_code-plugin-27272a?style=flat-square&labelColor=18181b&logo=anthropic&logoColor=ea580c">
   <img alt="Skills" src="https://img.shields.io/badge/skills-5-27272a?style=flat-square&labelColor=18181b">
-  <img alt="Reviewers" src="https://img.shields.io/badge/reviewers-7-ea580c?style=flat-square&labelColor=18181b">
+  <img alt="Reviewers" src="https://img.shields.io/badge/reviewers-9-ea580c?style=flat-square&labelColor=18181b">
 </p>
 
 <sub><a href="../../README.md">↑ part of the <b>crucible</b> marketplace</a></sub>
@@ -70,7 +70,7 @@ you just ask:
 > "How would reviewers react to this problem statement?"
 
 Crucible **auto-runs a reviewer round** (this skill fires on its own; only the
-gates are manual). Seven personas read it in turn:
+gates are manual). Nine personas read it in turn:
 
 - **Archimedes** (rigor): *"Define 'survive causal tracing' precisely. What threshold, what metric?"*
 - **Edison** (evidence): *"Which models? Where's the baseline you'll compare against?"*
@@ -88,10 +88,12 @@ are now visible.
 
 Crossing a gate is deliberate by design — it's your call, never Claude's. First
 comes a **Devil's Advocate pass**: Claude argues as hard as it can *against* your
-contribution. Then the panel votes. Say 4 of the 5 voting reviewers give
-accept/revise — the gate passes. But Linnaeus and Socrates always leave required
-revisions, and Socrates' stability worry gets logged as something you must address
-in SURVEY.
+contribution. Then **Athena**, the Area Chair, synthesizes the panel's arguments
+into two separate verdicts — soundness and significance — weighing the substance
+of what each reviewer raised rather than tallying votes. Say soundness lands on
+REVISE and significance clears the bar — the gate passes. But Linnaeus and
+Socrates always leave required revisions, and Socrates' stability worry gets
+logged as something you must address in SURVEY.
 
 Then the part most tools skip — a **Socratic probe**. Claude asks you, from memory:
 
@@ -145,23 +147,39 @@ SEED → PROBLEM → SURVEY → SOLUTION → DEVELOP → PAPER
 
 ## 🎭 Reviewer Panel
 
-Seven personas evaluate every gate. Each has a fixed lens and default stance designed to resist sycophancy — they look for reasons to reject before reasons to accept.
+Nine personas evaluate every gate, each reading through one of two axes —
+**soundness** (is it correct, evidenced, honest) or **significance** (does anyone
+care, would it change what people do). They are demanding but fair: every persona
+has a positive excellence signal it actively rewards, not just failure modes it
+punishes, and all of them are bound by a shared anti-heuristics list that rules
+out illegitimate reject reflexes (rejecting for being unsurprising, not beating
+SOTA, being "too simple", and the like). They look for reasons to recognize real
+work, not just reasons to reject it.
 
-| Reviewer | Lens | Default stance | Vote? |
-|---|---|---|---|
-| 🜂 **Flash** | 60-second scan | Rejects by default. Needs one sentence it hasn't seen before. | Yes (INTRIGUED or REJECT) |
-| 📐 **Archimedes** | Theory and rigor | Pedantic. Flags every hand-wave. Demands proof sketches. | Yes |
-| 🔬 **Edison** | Empirical evidence | Skeptical of results without ablations. Reproducibility focus. | Yes |
-| 🔭 **Copernicus** | Significance and novelty | Impatient with "we extend X to Y". Would this change how people think? | Yes |
-| ✍️ **Orwell** | Clarity and presentation | Demands plain English. Hostile to obfuscation. | Yes |
-| 📚 **Linnaeus** | Scholarship and positioning | Encyclopedic. Finds the paper you missed. Uses live search. | No — findings only |
-| 🧩 **Socrates** | Assumption auditing | Assumes every claim has an unstated condition. | No — findings only |
+| Reviewer | Lens | Axis | Default stance | Vote? |
+|---|---|---|---|---|
+| 🜂 **Flash** | 60-second scan | Significance | Withholds excitement until it finds the nugget. | Yes (INTRIGUED or REJECT) |
+| 📐 **Archimedes** | Theory and rigor | Soundness | Pedantic. Flags every hand-wave. Demands proof sketches. | Yes |
+| 🔬 **Edison** | Empirical evidence | Soundness | Skeptical of results without ablations. Reproducibility focus. | Yes |
+| 🔭 **Copernicus** | Significance and novelty | Significance | Impatient with "we extend X to Y". Would this change how people think? | Yes |
+| ✍️ **Orwell** | Clarity and presentation | Cross-cutting | Demands plain English. Hostile to obfuscation. | Yes |
+| 📚 **Linnaeus** | Scholarship and positioning | Cross-cutting | Encyclopedic. Finds the paper you missed. Uses live search. | No — findings only |
+| 🧩 **Socrates** | Assumption auditing | Cross-cutting | Assumes every claim has an unstated condition. | No — findings only |
+| 🏛️ **Cicero** | The strongest case for the work | Significance | The champion. Builds the best honest argument *for* acceptance. | No — champion voice |
+| ⚖️ **Rawls** | Ethics and societal impact | Cross-cutting | Raises a flag only when warranted; candor is never a violation. | No — ethics voice |
 
 ### ✅ Gate threshold
 
-**To pass a gate:** at least 3 of the 5 voting reviewers (Flash, Archimedes, Edison, Copernicus, Orwell) must give accept or revise — no outright reject.
+**To pass a gate:** an Area Chair persona, **Athena**, synthesizes the whole panel
+into two separate verdicts instead of counting votes — a **soundness** verdict
+(grounded in Archimedes and Edison) and a **significance** verdict (grounded in
+Flash, Copernicus, and Cicero's champion case). The gate passes when soundness
+isn't blocked by an unresolved, load-bearing fault and significance clears the
+venue's bar. One precise, substantiated objection can block the gate even if
+raised by a single reviewer; vague or anti-heuristic objections are discounted or
+discarded outright, no matter how many reviewers raise them.
 
-Linnaeus and Socrates always produce required revisions regardless of the vote. Their findings must be addressed before advancing.
+Linnaeus and Socrates always produce required revisions regardless of the verdicts. Their findings must be addressed before advancing.
 
 Every gate is preceded by a **Devil's Advocate pass** — Claude argues as hard as possible against the contribution before the panel evaluates it. The work must survive the worst-faith reading.
 

@@ -10,9 +10,11 @@ gate — don't skip it.
 ## What it does
 
 1. **Devil's Advocate pass** — argues as hard as possible against the contribution.
-2. **Reviewer gate** — the full panel evaluates. Passes if ≥ 3 of the 5 voting
-   reviewers give accept/revise with no outright reject. Linnaeus and Socrates
-   always add required revisions that must be addressed.
+2. **Reviewer gate** — the full nine-persona panel evaluates, then **Athena**, the
+   Area Chair, synthesizes the arguments (not the votes) into a soundness verdict
+   and a significance verdict. Passes if soundness has no unresolved, load-bearing
+   fault and significance clears the venue's bar. Linnaeus and Socrates always add
+   required revisions that must be addressed.
 3. **Socratic probe** — 2–3 open questions you answer from memory.
 4. **Advance or report** — if both pass, advances the stage and records history;
    otherwise returns a clear, specific list of required changes.
