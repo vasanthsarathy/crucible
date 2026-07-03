@@ -8,7 +8,7 @@
 
 <p>
   <a href="../../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-27272a?style=flat-square&labelColor=18181b"></a>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-ea580c?style=flat-square&labelColor=18181b">
+  <img alt="Version" src="https://img.shields.io/badge/version-0.2.0-ea580c?style=flat-square&labelColor=18181b">
   <img alt="Claude Code plugin" src="https://img.shields.io/badge/claude_code-plugin-27272a?style=flat-square&labelColor=18181b&logo=anthropic&logoColor=ea580c">
   <img alt="Skills" src="https://img.shields.io/badge/skills-5-27272a?style=flat-square&labelColor=18181b">
   <img alt="Reviewers" src="https://img.shields.io/badge/reviewers-9-ea580c?style=flat-square&labelColor=18181b">

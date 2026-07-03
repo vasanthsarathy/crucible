@@ -22,3 +22,6 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# Subagent-driven-development ledger scratch
+.superpowers/
