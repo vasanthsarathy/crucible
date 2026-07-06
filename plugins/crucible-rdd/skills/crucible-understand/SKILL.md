@@ -1,5 +1,5 @@
 ---
-name: crucible:understand
+name: crucible-understand
 description: Socratic understanding check on a concept in the user's crucible research project. Use when the user — in a crucible RDD project — says they're unsure, confused, or wants to test whether they truly understand a method, definition, or claim they're relying on. Logs gaps and clarifications.
 ---
 

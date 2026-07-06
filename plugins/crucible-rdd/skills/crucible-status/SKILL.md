@@ -1,5 +1,5 @@
 ---
-name: crucible:status
+name: crucible-status
 description: Show a status dashboard for the active crucible research project — current stage, section completion, last reviewer verdicts, open concerns, concept gaps, and recent ideas. Use when the user — in a crucible RDD project — asks where they are, what's left, what the reviewers said, or for a project overview or status.
 ---
 

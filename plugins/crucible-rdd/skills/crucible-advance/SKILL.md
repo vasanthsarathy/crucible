@@ -1,5 +1,5 @@
 ---
-name: crucible:advance
+name: crucible-advance
 description: Check readiness to advance to the next research stage. Runs a full reviewer gate, then a Socratic understanding probe. Advances if both pass; returns a clear list of required changes if not.
 disable-model-invocation: true
 ---

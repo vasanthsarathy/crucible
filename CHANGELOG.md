@@ -6,6 +6,18 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-07-06
+
+### Fixed
+- Plugin failed to install with `skills: Invalid input`. The `skills` field in
+  `plugin.json` was an object (`{install_path, files}`), which the plugin manifest
+  schema rejects. Removed the field entirely — skills now auto-discover from
+  `skills/*/SKILL.md`.
+- Skills were flat `.md` files (`skills/crucible-start.md`) rather than the required
+  per-skill directories. Each is now `skills/<name>/SKILL.md`.
+- Skill `name:` frontmatter changed from `crucible:<x>` (colon) to kebab-case
+  `crucible-<x>`, matching each skill's directory.
+
 ## [0.2.0] - 2026-07-03
 
 ### Added

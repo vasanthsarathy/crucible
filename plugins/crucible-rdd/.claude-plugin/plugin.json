@@ -1,20 +1,10 @@
 {
   "name": "crucible-rdd",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Crucible — Review-driven Development for AI/ML research papers. Run your work through an adversarial reviewer panel at every stage. Skills-primary: works standalone, enriched by optional MCP server.",
   "author": {"name": "vasanthsarathy", "email": "vsarathy@gmail.com"},
   "license": "MIT",
   "keywords": ["research", "papers", "review", "rdd", "neurips", "iclr", "ml", "crucible"],
-  "skills": {
-    "install_path": "skills/",
-    "files": [
-      "crucible-start.md",
-      "crucible-reviewer-round.md",
-      "crucible-advance.md",
-      "crucible-understand.md",
-      "crucible-status.md"
-    ]
-  },
   "mcpServers": {
     "crucible": {
       "command": "uv",
